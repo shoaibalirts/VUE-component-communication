@@ -3,6 +3,9 @@
     <header>
       <h1>My Friends</h1>
     </header>
+    <div style="display: flex; justify-content: center">
+      <new-friend @submit-button-event="newFormData"></new-friend>
+    </div>
     <ul>
       <friend-contact
         v-for="friend in friends"
@@ -20,8 +23,9 @@
 
 <script>
 import FriendContact from "./components/FriendContact.vue";
+import NewFriend from "./components/NewFriend.vue";
 export default {
-  components: { FriendContact },
+  components: { FriendContact, NewFriend },
   data() {
     return {
       friends: [
@@ -43,11 +47,32 @@ export default {
     };
   },
   methods: {
-    toggleFavoriteStatus(friendId) { 
-      const identifiedFriend = this.friends.find(
-        (friend) => friend.id === friendId
-      );
+    toggleFavoriteStatus(friendId) {
+      const identifiedFriend = this.friends.find((friend) => {
+        console.log("toggleFavoriteStatus triggered");
+
+        // console.log(friend);
+        // iterates all elements from 0 to the length of array, but as soon as it meets the below condition then
+        // it stops further iteration and returns that element which is pointing the current position
+        return friend.id === friendId;
+      });
+      console.log(identifiedFriend);
+
       identifiedFriend.isFavorite = !identifiedFriend.isFavorite;
+    },
+    newFormData(formData) {
+      // console.log(formData);
+
+      const newFriend = {
+        id: Math.random(),
+        name: formData.name,
+        phone: formData.phoneNumber,
+        email: formData.emailAddress,
+        isFavorite: false,
+      };
+      // console.log(formData);
+
+      this.friends.push(newFriend);
     },
   },
 };
@@ -79,7 +104,8 @@ header {
   padding: 0;
   list-style: none;
 }
-#app li {
+#app li,
+#app form {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   margin: 1rem auto;
   border-radius: 10px;
