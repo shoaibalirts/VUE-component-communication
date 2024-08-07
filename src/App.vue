@@ -4,7 +4,7 @@
       <h1>My Friends</h1>
     </header>
     <div style="display: flex; justify-content: center">
-      <new-friend @submit-button-event="newFormData"></new-friend>
+      <new-friend @submit-button-event="handleAddContact"></new-friend>
     </div>
     <ul>
       <friend-contact
@@ -61,9 +61,8 @@ export default {
 
       identifiedFriend.isFavorite = !identifiedFriend.isFavorite;
     },
-    newFormData(formData) {
-      // console.log(formData);
 
+    handleAddContact(formData) {
       const newFriend = {
         id: Math.random(),
         name: formData.name,
@@ -75,6 +74,7 @@ export default {
 
       this.friends.push(newFriend);
     },
+    
     handleDeleteContact(contactId) {
       console.log(contactId);
 
