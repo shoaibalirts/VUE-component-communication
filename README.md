@@ -1,6 +1,6 @@
 # VUE component communication from parent to child using props
 
-<p>Added compoents and ensure coomuncaiton between them </p>
+<p>Added compoents and ensure coomunication between them </p>
 <p>FriendContact component enlists the friends list using received props </p>
 <p>NewFriend component has form to get user input and then sends user data to App</p>
 <p>App is the common place where both components along with two static user data </p>
