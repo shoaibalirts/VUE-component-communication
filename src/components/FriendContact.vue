@@ -15,6 +15,7 @@
         {{ emailAddress }}
       </li>
     </ul>
+    <button @click="handleDelete">Delete</button>
   </li>
 </template>
 
@@ -47,7 +48,7 @@ export default {
   //     // },
   //   },
   // },
-  emits: ["toggle-favorite"],
+  emits: ["toggle-favorite", "delete-contact-event"],
   // emits: {
   //   "toggle-favorite": function (id) {
   //     if (id) {
@@ -70,6 +71,11 @@ export default {
     },
     toggleFavorite() {
       this.$emit("toggle-favorite", this.id);
+    },
+    handleDelete() {
+      console.log("clicked in FriendContact");
+
+      this.$emit("delete-contact-event", this.id);
     },
   },
 };
