@@ -1,4 +1,4 @@
-# VUE component communication from parent to child using props
+# VUE component communication from parent to child and vice versa
 
 <p>Added compoents and ensure coomunication between them </p>
 <p>FriendContact component enlists the friends list using received props </p>
